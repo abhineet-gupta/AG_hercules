@@ -1,0 +1,975 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Timing &#8212; HERCULES</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=b8b12719"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-3V1BDK8KEJ"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-3V1BDK8KEJ');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-3V1BDK8KEJ');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'timing';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="H_Dict Structure" href="h_dict.html" />
+    <link rel="prev" title="Units Convention in Hercules" href="units.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/herc.png" class="logo__image only-light" alt="HERCULES - Home"/>
+    <img src="_static/herc.png" class="logo__image only-dark pst-js-only" alt="HERCULES - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="index.html">
+                    Hercules
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Installation and Contribution</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation instructions</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="contribute.html">Contributing to Hercules</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Running Hercules</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="running_hercules.html">Running Hercules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="order_of_op.html">Order of Operations</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Key Concepts</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="key_concepts.html">Key Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="units.html">Units Convention in Hercules</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Timing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="h_dict.html">H_Dict Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hybrid_plant.html">Hybrid Plant Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="component_types.html">Component Names, Types, and Categories</a></li>
+<li class="toctree-l1"><a class="reference internal" href="adding_components.html">Adding a New Component</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hercules_model.html">HerculesModel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="output_files.html">Output Files</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Plant Components</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="wind.html">Wind Farm Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="power_playback.html">Power Playback</a></li>
+<li class="toctree-l1"><a class="reference internal" href="solar_pv.html">Solar PV</a></li>
+<li class="toctree-l1"><a class="reference internal" href="battery.html">Battery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="electrolyzer.html">Electrolyzer Plant</a></li>
+<li class="toctree-l1"><a class="reference internal" href="thermal_component_base.html">Thermal Component Base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="open_cycle_gas_turbine.html">Open Cycle Gas Turbine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="steam_turbine.html">Steam Turbine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="combined_cycle_plant.html">Combined Cycle Gas Turbine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="thermal_plant.html">Thermal Plant</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Inputs</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="hercules_input.html">Hercules Input Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gridstatus_download.html">Grid Status Data Download</a></li>
+<li class="toctree-l1"><a class="reference internal" href="resource_downloading.html">Solar and Wind Resource Downloading and Upsampling</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="examples_overview.html">Examples Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples/00_wind_farm_only.html">Example 00: Wind only</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples/00c_power_playback.html">Example 00c: Power Playback</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples/01_wind_farm_dof1_model.html">Example 01: Wind Only: 1-DOF model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples/02a_wind_farm_realistic_inflow.html">Example 02a: Wind Farm Realistic Inflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples/02b_wind_farm_realistic_inflow_precom_floris.html">Example 02b: Wind Farm Realistic Inflow (Precomputed FLORIS)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples/02c_wind_farm_realistic_inflow_direct.html">Example 02c: Wind Farm Realistic Inflow (Direct - No Wake Modeling)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples/03_wind_and_solar.html">Example 03: Wind and solar hybrid plant</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples/04_wind_and_storage.html">Example 04: Wind and storage hybrid plant</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples/05_wind_and_storage_with_lmp.html">Example 05: Wind and storage with LMP-based control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples/06_wind_and_hydrogen.html">Example 06: Wind and hydrogen hybrid plant</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples/07_thermal_plants.html">Example 07: Thermal Plants</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples/08_multi_unit_thermal_plants.html">Example 08: Multi-unit Thermal Plants</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/NatLabRockies/hercules" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/NatLabRockies/hercules/edit/develop/docs/timing.md" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/NatLabRockies/hercules/issues/new?title=Issue%20on%20page%20%2Ftiming.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/timing.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Timing</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#core-concepts">Core Concepts</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#time-interpretation-inputs-vs-internal-values">Time Interpretation: Inputs vs. Internal Values</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#input-files-start-of-period-convention">Input files: start-of-period convention</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hercules-internal-values-instantaneous-convention">Hercules internal values: instantaneous convention</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interpolation-methods">Interpolation methods</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#averaged-to-instantaneous-wind-solar-and-similar-resource-and-power-signals"><code class="docutils literal notranslate"><span class="pre">"averaged_to_instantaneous"</span></code> (wind, solar, and similar resource and power signals)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#instantaneous-to-instantaneous"><code class="docutils literal notranslate"><span class="pre">"instantaneous_to_instantaneous"</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#achieving-zero-order-hold-zoh-behaviour">Achieving zero-order-hold (ZOH) behaviour</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#input-requirements">Input Requirements</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#datetime-string-format-iso-8601">Datetime String Format (ISO 8601)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#converting-local-time-to-utc">Converting Local Time to UTC</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computed-time-values">Computed Time Values</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-file-requirements">Data File Requirements</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wind-and-solar-input-data">Wind and Solar Input Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#external-data-lmp-etc">External Data (LMP, etc.)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#time-coordinate-system">Time Coordinate System</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#output-files">Output Files</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#backward-compatibility">Backward Compatibility</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#consistency-validation">Consistency Validation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#best-practices">Best Practices</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-complete-timing-setup">Example: Complete Timing Setup</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="timing">
+<h1>Timing<a class="headerlink" href="#timing" title="Link to this heading">#</a></h1>
+<p>Hercules uses a simplified, UTC-first time model where all simulations are referenced to coordinated universal time (UTC).</p>
+<section id="core-concepts">
+<h2>Core Concepts<a class="headerlink" href="#core-concepts" title="Link to this heading">#</a></h2>
+<p>Timing in Hercules is specified using two complementary representations:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">time</span></code> (float): Simulation time in seconds, where <code class="docutils literal notranslate"><span class="pre">time=0</span></code> corresponds to <code class="docutils literal notranslate"><span class="pre">starttime_utc</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">time_utc</span></code> (datetime): Absolute UTC timestamp</p></li>
+</ul>
+</section>
+<section id="time-interpretation-inputs-vs-internal-values">
+<h2>Time Interpretation: Inputs vs. Internal Values<a class="headerlink" href="#time-interpretation-inputs-vs-internal-values" title="Link to this heading">#</a></h2>
+<section id="input-files-start-of-period-convention">
+<h3>Input files: start-of-period convention<a class="headerlink" href="#input-files-start-of-period-convention" title="Link to this heading">#</a></h3>
+<p>In external data sources such as weather files, SCADA records, and resource
+databases, each <code class="docutils literal notranslate"><span class="pre">time_utc</span></code> timestamp marks the <strong>beginning</strong> of a reporting
+period and the associated values (irradiance, wind speed, power, etc.)
+represent an average or aggregate over that period.  For example, an hourly
+weather file with a row at <code class="docutils literal notranslate"><span class="pre">2020-06-15T12:00:00Z</span></code> and GHI = 735 W/m² means
+that 735 W/m² is the average GHI from 12:00 to 13:00.</p>
+</section>
+<section id="hercules-internal-values-instantaneous-convention">
+<h3>Hercules internal values: instantaneous convention<a class="headerlink" href="#hercules-internal-values-instantaneous-convention" title="Link to this heading">#</a></h3>
+<p>Inside the simulation, values at a given time step represent <strong>instantaneous</strong>
+quantities at that moment.  All Hercules output values follow this same
+instantaneous convention.</p>
+</section>
+<section id="interpolation-methods">
+<h3>Interpolation methods<a class="headerlink" href="#interpolation-methods" title="Link to this heading">#</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">interpolate_df</span></code> function in <code class="docutils literal notranslate"><span class="pre">utilities.py</span></code> accepts a mandatory
+<code class="docutils literal notranslate"><span class="pre">interpolation_method</span></code> parameter that controls how numeric columns are
+resampled onto the simulation time grid.  Two methods are available:</p>
+<section id="averaged-to-instantaneous-wind-solar-and-similar-resource-and-power-signals">
+<h4><code class="docutils literal notranslate"><span class="pre">&quot;averaged_to_instantaneous&quot;</span></code> (wind, solar, and similar resource and power signals)<a class="headerlink" href="#averaged-to-instantaneous-wind-solar-and-similar-resource-and-power-signals" title="Link to this heading">#</a></h4>
+<p>Input values are period averages whose timestamps mark the <strong>start</strong> of each
+period.  The best single-point estimate of a period-averaged value is at the
+<strong>midpoint</strong> of its interval, not the start.  For example, the hourly average
+from 12:00-13:00 is most representative of conditions at 12:30. This also ensures that an average of the signal back to the original time interval will match the original data.</p>
+<ol class="arabic simple">
+<li><p>Each numeric value is assigned to the midpoint of its input interval
+(using <code class="docutils literal notranslate"><span class="pre">_compute_interval_midpoints</span></code>).</p></li>
+<li><p>Linear interpolation is then performed between these midpoints to produce
+values at the simulation time steps.</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Input file (start-of-period):
+
+time_utc             value
+12:00                100        ← average over [12:00, 13:00)
+13:00                200        ← average over [13:00, 14:00)
+
+After midpoint correction:
+
+time                 value
+12:30                100        ← midpoint of [12:00, 13:00)
+13:30                200        ← midpoint of [13:00, 14:00)
+
+Querying at 13:00 yields 150 (halfway between midpoints).
+</pre></div>
+</div>
+<p>The same <code class="docutils literal notranslate"><span class="pre">&quot;averaged_to_instantaneous&quot;</span></code> mechanism is also applied to the
+<strong>outputs</strong> of the PySAM solar model when <code class="docutils literal notranslate"><span class="pre">use_resource_solar_dt</span></code> is active
+(its default).  In that mode PySAM is executed once on the resource weather
+grid and its power/diagnostic outputs are upsampled to the Hercules grid
+via this single boundary crossing - see
+<a class="reference internal" href="solar_pv.html#resource-resolution-pysam-execution-use_resource_solar_dt"><span class="std std-ref">Resource-resolution PySAM execution</span></a>.</p>
+</section>
+<section id="instantaneous-to-instantaneous">
+<h4><code class="docutils literal notranslate"><span class="pre">&quot;instantaneous_to_instantaneous&quot;</span></code><a class="headerlink" href="#instantaneous-to-instantaneous" title="Link to this heading">#</a></h4>
+<p>Input values already represent instantaneous measurements at their
+timestamps.  Standard linear interpolation is performed directly on the
+original timestamps with no midpoint shift.</p>
+<hr class="docutils" />
+<p>In both methods, datetime columns (e.g. <code class="docutils literal notranslate"><span class="pre">time_utc</span></code>) are linearly
+interpolated on the raw timestamps without any shift, because they are
+instantaneous coordinate mappings between simulation time and wall-clock
+time, not period-averaged measurements.</p>
+</section>
+<section id="achieving-zero-order-hold-zoh-behaviour">
+<h4>Achieving zero-order-hold (ZOH) behaviour<a class="headerlink" href="#achieving-zero-order-hold-zoh-behaviour" title="Link to this heading">#</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">interpolate_df</span></code> does not provide a dedicated zero-order-hold mode.  If you
+need step/piecewise-constant values – for example, LMP prices that
+should be held constant across each reporting interval – pre-process your
+input data to include an additional row at the end of each interval that
+carries the same value as the start-of-interval row, and then use
+<code class="docutils literal notranslate"><span class="pre">&quot;instantaneous_to_instantaneous&quot;</span></code>.  Linear interpolation between each pair
+of identical endpoints reproduces the ZOH shape.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Original data (start-of-interval only):
+
+time_utc             value
+12:00                100
+13:00                200
+
+After inserting end-of-interval rows (just before the next start):
+
+time_utc             value
+12:00                100
+12:59:59             100   ← added endpoint
+13:00                200
+13:59:59             200   ← added endpoint
+
+Querying at 12:30 with &quot;instantaneous_to_instantaneous&quot; yields 100.
+Querying at 13:00 yields 200.
+</pre></div>
+</div>
+<p>See
+<a class="reference download internal" download="" href="_downloads/5050b9fc76ba37c8dc140c80baf00d69/grid_utilities.py"><span class="xref download myst"><code class="docutils literal notranslate"><span class="pre">generate_locational_marginal_price_dataframe_from_gridstatus</span></code></span></a>
+in <code class="docutils literal notranslate"><span class="pre">hercules/grid/grid_utilities.py</span></code> for a worked example of this
+endpoint-insertion pattern (it shifts a copy of the data by <code class="docutils literal notranslate"><span class="pre">dt</span> <span class="pre">-</span> <span class="pre">1</span></code> seconds
+and merges it back in before handing the frame to Hercules).</p>
+</section>
+</section>
+</section>
+<section id="input-requirements">
+<h2>Input Requirements<a class="headerlink" href="#input-requirements" title="Link to this heading">#</a></h2>
+<p>All Hercules input files must specify start and end times using UTC datetime strings:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">starttime_utc</span></code>: The UTC datetime when the simulation begins (required in input YAML)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">endtime_utc</span></code>: The UTC datetime when the simulation ends (required in input YAML)</p></li>
+</ul>
+<p>These are the ONLY time parameters you need to specify in your input file. Example:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">dt</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0</span>
+<span class="nt">starttime_utc</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;2020-01-01T00:00:00Z&quot;</span><span class="w">  </span><span class="c1"># ISO 8601 format</span>
+<span class="nt">endtime_utc</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;2020-01-01T01:00:00Z&quot;</span><span class="w">    </span><span class="c1"># 1 hour simulation</span>
+</pre></div>
+</div>
+<section id="datetime-string-format-iso-8601">
+<h3>Datetime String Format (ISO 8601)<a class="headerlink" href="#datetime-string-format-iso-8601" title="Link to this heading">#</a></h3>
+<p>Hercules accepts UTC datetime strings in <strong>ISO 8601</strong> format. The variable names <code class="docutils literal notranslate"><span class="pre">starttime_utc</span></code> and <code class="docutils literal notranslate"><span class="pre">endtime_utc</span></code> indicate that these times must represent UTC (Coordinated Universal Time).</p>
+<p><strong>Accepted formats:</strong></p>
+<ul class="simple">
+<li><p><strong>Explicit UTC with “Z” suffix</strong>: <code class="docutils literal notranslate"><span class="pre">&quot;2020-01-01T00:00:00Z&quot;</span></code> - The “Z” (Zulu time) explicitly marks the time as UTC</p></li>
+<li><p><strong>Naive string (no timezone)</strong>: <code class="docutils literal notranslate"><span class="pre">&quot;2020-01-01T00:00:00&quot;</span></code> - Without timezone info, treated as UTC</p></li>
+</ul>
+<p><strong>Rejected formats:</strong></p>
+<ul class="simple">
+<li><p><strong>Timezone offsets</strong>: <code class="docutils literal notranslate"><span class="pre">&quot;2020-01-01T00:00:00+05:00&quot;</span></code> or <code class="docutils literal notranslate"><span class="pre">&quot;2020-01-01T00:00:00-08:00&quot;</span></code> - These imply a different timezone, which contradicts the UTC requirement</p></li>
+</ul>
+<p><strong>About ISO 8601:</strong>
+ISO 8601 is an international standard for representing dates and times. The format used by Hercules is:</p>
+<ul class="simple">
+<li><p>Date: <code class="docutils literal notranslate"><span class="pre">YYYY-MM-DD</span></code> (year-month-day)</p></li>
+<li><p>Separator: <code class="docutils literal notranslate"><span class="pre">T</span></code> (separates date and time)</p></li>
+<li><p>Time: <code class="docutils literal notranslate"><span class="pre">HH:MM:SS</span></code> (24-hour format)</p></li>
+<li><p>UTC marker: <code class="docutils literal notranslate"><span class="pre">Z</span></code> (optional but recommended for clarity)</p></li>
+</ul>
+<p>Examples:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;2020-01-01T00:00:00Z&quot;</span></code> - Midnight, January 1, 2020 UTC</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;2020-06-15T12:30:45Z&quot;</span></code> - 12:30:45 PM, June 15, 2020 UTC</p></li>
+</ul>
+<p>When loading input files, Hercules validates that datetime strings don’t contain timezone offsets and will raise a clear error if a non-UTC timezone is detected.</p>
+</section>
+<section id="converting-local-time-to-utc">
+<h3>Converting Local Time to UTC<a class="headerlink" href="#converting-local-time-to-utc" title="Link to this heading">#</a></h3>
+<p>If you only know your local time and need to convert it to UTC (accounting for daylight saving time), Hercules provides a utility function to help:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">hercules.utilities</span><span class="w"> </span><span class="kn">import</span> <span class="n">local_time_to_utc</span>
+
+<span class="c1"># Midnight Jan 1, 2025 in Mountain Time (MST, UTC-7, no DST)</span>
+<span class="n">utc_time_jan</span> <span class="o">=</span> <span class="n">local_time_to_utc</span><span class="p">(</span><span class="s2">&quot;2025-01-01T00:00:00&quot;</span><span class="p">,</span> <span class="n">tz</span><span class="o">=</span><span class="s2">&quot;America/Denver&quot;</span><span class="p">)</span>
+<span class="c1"># Returns: &quot;2025-01-01T07:00:00Z&quot;</span>
+
+<span class="c1"># Midnight July 1, 2025 in Mountain Time (MDT, UTC-6, DST in effect)</span>
+<span class="n">utc_time_july</span> <span class="o">=</span> <span class="n">local_time_to_utc</span><span class="p">(</span><span class="s2">&quot;2025-07-01T00:00:00&quot;</span><span class="p">,</span> <span class="n">tz</span><span class="o">=</span><span class="s2">&quot;America/Denver&quot;</span><span class="p">)</span>
+<span class="c1"># Returns: &quot;2025-07-01T06:00:00Z&quot;</span>
+</pre></div>
+</div>
+<p><strong>Note:</strong> The <code class="docutils literal notranslate"><span class="pre">tz</span></code> parameter is <strong>required</strong>. You must specify your timezone using IANA timezone names.</p>
+<p><strong>Available Timezone Names:</strong></p>
+<p>Common timezone names:</p>
+<ul class="simple">
+<li><p><strong>US</strong>: <code class="docutils literal notranslate"><span class="pre">&quot;America/New_York&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;America/Chicago&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;America/Denver&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;America/Los_Angeles&quot;</span></code></p></li>
+<li><p><strong>Europe</strong>: <code class="docutils literal notranslate"><span class="pre">&quot;Europe/London&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;Europe/Paris&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;Europe/Berlin&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;Europe/Madrid&quot;</span></code></p></li>
+<li><p><strong>Asia</strong>: <code class="docutils literal notranslate"><span class="pre">&quot;Asia/Tokyo&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;Asia/Shanghai&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;Asia/Dubai&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;Asia/Kolkata&quot;</span></code></p></li>
+<li><p><strong>Pacific</strong>: <code class="docutils literal notranslate"><span class="pre">&quot;Pacific/Auckland&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;Pacific/Honolulu&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;Pacific/Sydney&quot;</span></code></p></li>
+</ul>
+<p><strong>Complete list of timezones:</strong></p>
+<p>For a complete list of all available IANA timezone names, see:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/List_of_tz_database_time_zones">Wikipedia: List of tz database time zones</a></p></li>
+<li><p>Or in Python:</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">zoneinfo</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">zoneinfo</span><span class="o">.</span><span class="n">available_timezones</span><span class="p">()))</span>
+</pre></div>
+</div>
+<p>The function automatically handles daylight saving time conversions based on the date you provide.</p>
+<p><strong>Example usage in your input YAML:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">hercules.utilities</span><span class="w"> </span><span class="kn">import</span> <span class="n">local_time_to_utc</span>
+
+<span class="c1"># If you want midnight local time (Mountain Time) on Jan 1, 2025</span>
+<span class="n">start_utc</span> <span class="o">=</span> <span class="n">local_time_to_utc</span><span class="p">(</span><span class="s2">&quot;2025-01-01T00:00:00&quot;</span><span class="p">,</span> <span class="n">tz</span><span class="o">=</span><span class="s2">&quot;America/Denver&quot;</span><span class="p">)</span>
+<span class="n">end_utc</span> <span class="o">=</span> <span class="n">local_time_to_utc</span><span class="p">(</span><span class="s2">&quot;2025-07-01T00:00:00&quot;</span><span class="p">,</span> <span class="n">tz</span><span class="o">=</span><span class="s2">&quot;America/Denver&quot;</span><span class="p">)</span>
+
+<span class="c1"># Use these values in your YAML:</span>
+<span class="c1"># starttime_utc: &quot;2025-01-01T07:00:00Z&quot;</span>
+<span class="c1"># endtime_utc: &quot;2025-07-01T06:00:00Z&quot;</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="computed-time-values">
+<h2>Computed Time Values<a class="headerlink" href="#computed-time-values" title="Link to this heading">#</a></h2>
+<p>When Hercules loads your input file, it automatically computes:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">starttime</span></code>: Always 0.0 (seconds)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">endtime</span></code>: Simulation duration in seconds, computed as <code class="docutils literal notranslate"><span class="pre">(endtime_utc</span> <span class="pre">-</span> <span class="pre">starttime_utc).total_seconds()</span></code></p></li>
+</ul>
+<p>For the example above, <code class="docutils literal notranslate"><span class="pre">endtime</span></code> would be 3600.0 seconds.</p>
+</section>
+<section id="data-file-requirements">
+<h2>Data File Requirements<a class="headerlink" href="#data-file-requirements" title="Link to this heading">#</a></h2>
+<section id="wind-and-solar-input-data">
+<h3>Wind and Solar Input Data<a class="headerlink" href="#wind-and-solar-input-data" title="Link to this heading">#</a></h3>
+<p>Both wind and solar input CSV/Feather/Parquet files must contain a <code class="docutils literal notranslate"><span class="pre">time_utc</span></code> column with UTC timestamps.  Each <code class="docutils literal notranslate"><span class="pre">time_utc</span></code> value marks the <strong>start of a reporting period</strong>; the data values on that row are treated as period averages.  These are interpolated with <code class="docutils literal notranslate"><span class="pre">&quot;averaged_to_instantaneous&quot;</span></code>.  See <a class="reference internal" href="#interpolation-methods"><span class="xref myst">Interpolation methods</span></a> above for details.</p>
+</section>
+<section id="external-data-lmp-etc">
+<h3>External Data (LMP, etc.)<a class="headerlink" href="#external-data-lmp-etc" title="Link to this heading">#</a></h3>
+<p>External data files loaded via <code class="docutils literal notranslate"><span class="pre">_read_external_data_file</span></code> are upsampled onto
+the simulation time grid with <code class="docutils literal notranslate"><span class="pre">&quot;instantaneous_to_instantaneous&quot;</span></code> (linear
+interpolation between the supplied timestamps).  If you want zero-order-hold
+(piecewise-constant) behaviour for signals like LMP prices, pre-process the
+file to include end-of-interval rows that repeat the previous value as
+described in <a class="reference internal" href="#achieving-zero-order-hold-zoh-behaviour"><span class="xref myst">Achieving zero-order-hold (ZOH) behaviour</span></a>.
+The helper
+<a class="reference download internal" download="" href="_downloads/5050b9fc76ba37c8dc140c80baf00d69/grid_utilities.py"><span class="xref download myst"><code class="docutils literal notranslate"><span class="pre">generate_locational_marginal_price_dataframe_from_gridstatus</span></code></span></a>
+in <code class="docutils literal notranslate"><span class="pre">hercules/grid/grid_utilities.py</span></code> is a concrete example of adding those
+endpoint rows for LMP data.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>time_utc,wd_mean,ws_000,ws_001,ws_002
+2020-01-01T00:00:00Z,270.0,8.0,8.1,8.2
+2020-01-01T00:00:01Z,270.5,8.1,8.2,8.3
+...
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">time</span></code> column (numeric seconds from t=0) is computed internally by Hercules components and should NOT be included in your input files.</p>
+</section>
+</section>
+<section id="time-coordinate-system">
+<h2>Time Coordinate System<a class="headerlink" href="#time-coordinate-system" title="Link to this heading">#</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Timeline Visualization:
+
+time (seconds):    0.0 ----------- duration (endtime) -----------&gt;
+                   |                                        |
+                   |                                        |
+time_utc:          |                                        |
+                   v                                        v
+                   starttime_utc                         endtime_utc
+                   (datetime)                            (datetime)
+
+Key Points:
+• time=0 corresponds to starttime_utc
+• time is always relative to starttime_utc
+• All times advance together: time_utc = starttime_utc + timedelta(seconds=time)
+</pre></div>
+</div>
+</section>
+<section id="output-files">
+<h2>Output Files<a class="headerlink" href="#output-files" title="Link to this heading">#</a></h2>
+<p>All values in Hercules output files represent <strong>instantaneous</strong> quantities at each time step, not period averages.  See <a class="reference internal" href="#time-interpretation-inputs-vs-internal-values"><span class="xref myst">Time Interpretation</span></a> for the distinction from input files.</p>
+<p>Hercules output HDF5 files store:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">time</span></code> array: Simulation time points (seconds from t=0)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">step</span></code> array: Simulation step numbers</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">starttime_utc</span></code> metadata: Starting UTC timestamp (Unix timestamp format)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">time_utc</span></code> column: Reconstructed UTC timestamps for each time point</p></li>
+</ul>
+<p>The <code class="docutils literal notranslate"><span class="pre">time_utc</span></code> column in output data is reconstructed during read using:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">time_utc</span> <span class="o">=</span> <span class="n">starttime_utc</span> <span class="o">+</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">seconds</span><span class="o">=</span><span class="n">time</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="backward-compatibility">
+<h2>Backward Compatibility<a class="headerlink" href="#backward-compatibility" title="Link to this heading">#</a></h2>
+<p><strong>Note for users with old output files:</strong> Hercules maintains backward compatibility with output files created before this timing model change. Old files may contain <code class="docutils literal notranslate"><span class="pre">zero_time_utc</span></code> metadata instead of <code class="docutils literal notranslate"><span class="pre">starttime_utc</span></code>. The output reader automatically handles both formats.</p>
+</section>
+<section id="consistency-validation">
+<h2>Consistency Validation<a class="headerlink" href="#consistency-validation" title="Link to this heading">#</a></h2>
+<p>When multiple plant components (wind, solar) provide time-series data:</p>
+<ol class="arabic simple">
+<li><p>All input data files must contain <code class="docutils literal notranslate"><span class="pre">time_utc</span></code> columns</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">HybridPlant</span></code> class validates that all components’ <code class="docutils literal notranslate"><span class="pre">starttime_utc</span></code> values match</p></li>
+<li><p>A single <code class="docutils literal notranslate"><span class="pre">starttime_utc</span></code> value is promoted to the top level of <code class="docutils literal notranslate"><span class="pre">h_dict</span></code></p></li>
+</ol>
+<p>This ensures temporal consistency across all simulation components.</p>
+</section>
+<section id="best-practices">
+<h2>Best Practices<a class="headerlink" href="#best-practices" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p><strong>Always use UTC timestamps</strong> in your input files to avoid timezone confusion</p></li>
+<li><p><strong>Use ISO 8601 format</strong> for datetime strings: <code class="docutils literal notranslate"><span class="pre">&quot;YYYY-MM-DDTHH:MM:SSZ&quot;</span></code></p></li>
+<li><p><strong>Ensure data coverage</strong>: Your input data files must cover the full range from <code class="docutils literal notranslate"><span class="pre">starttime_utc</span></code> to <code class="docutils literal notranslate"><span class="pre">endtime_utc</span></code></p></li>
+<li><p><strong>Don’t include <code class="docutils literal notranslate"><span class="pre">time</span></code> columns</strong> in your input CSV files - Hercules computes these internally</p></li>
+<li><p><strong>Match your dt</strong>: Ensure your input data’s temporal resolution is compatible with your simulation <code class="docutils literal notranslate"><span class="pre">dt</span></code></p></li>
+</ol>
+</section>
+<section id="example-complete-timing-setup">
+<h2>Example: Complete Timing Setup<a class="headerlink" href="#example-complete-timing-setup" title="Link to this heading">#</a></h2>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># hercules_input.yaml</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">example_simulation</span>
+<span class="nt">dt</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0</span><span class="w">  </span><span class="c1"># seconds</span>
+
+<span class="c1"># Specify UTC times (REQUIRED)</span>
+<span class="nt">starttime_utc</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;2020-06-15T12:00:00Z&quot;</span>
+<span class="nt">endtime_utc</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;2020-06-15T13:00:00Z&quot;</span><span class="w">  </span><span class="c1"># 1 hour simulation</span>
+
+<span class="nt">plant</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">interconnect_limit</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">50000</span><span class="w">  </span><span class="c1"># kW</span>
+
+<span class="nt">wind_farm</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">component_type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">WindFarm</span>
+<span class="w">  </span><span class="nt">wind_input_filename</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">inputs/wind_data.ftr</span>
+<span class="w">  </span><span class="c1"># wind_data.ftr must have time_utc column covering the simulation period</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+</pre></div>
+</div>
+<p>Your <code class="docutils literal notranslate"><span class="pre">wind_data.ftr</span></code> file should contain:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">time_utc</span>                 <span class="o">|</span> <span class="n">wd_mean</span> <span class="o">|</span> <span class="n">ws_000</span> <span class="o">|</span> <span class="n">ws_001</span> <span class="o">|</span> <span class="o">...</span>
+<span class="o">-------------------------|---------|--------|--------|----</span>
+<span class="mi">2020</span><span class="o">-</span><span class="mi">06</span><span class="o">-</span><span class="mi">15</span><span class="n">T12</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="n">Z</span>     <span class="o">|</span> <span class="mf">270.0</span>   <span class="o">|</span> <span class="mf">8.0</span>    <span class="o">|</span> <span class="mf">8.1</span>    <span class="o">|</span> <span class="o">...</span>
+<span class="mi">2020</span><span class="o">-</span><span class="mi">06</span><span class="o">-</span><span class="mi">15</span><span class="n">T12</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">01</span><span class="n">Z</span>     <span class="o">|</span> <span class="mf">270.1</span>   <span class="o">|</span> <span class="mf">8.0</span>    <span class="o">|</span> <span class="mf">8.1</span>    <span class="o">|</span> <span class="o">...</span>
+<span class="o">...</span>
+<span class="mi">2020</span><span class="o">-</span><span class="mi">06</span><span class="o">-</span><span class="mi">15</span><span class="n">T13</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="n">Z</span>     <span class="o">|</span> <span class="mf">271.5</span>   <span class="o">|</span> <span class="mf">8.2</span>    <span class="o">|</span> <span class="mf">8.3</span>    <span class="o">|</span> <span class="o">...</span>
+</pre></div>
+</div>
+<p>Hercules will automatically compute the <code class="docutils literal notranslate"><span class="pre">time</span></code> column internally:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">time_utc</span>                 <span class="o">|</span> <span class="n">time</span> <span class="o">|</span> <span class="o">...</span>
+<span class="o">-------------------------|------|----</span>
+<span class="mi">2020</span><span class="o">-</span><span class="mi">06</span><span class="o">-</span><span class="mi">15</span><span class="n">T12</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="n">Z</span>     <span class="o">|</span> <span class="mf">0.0</span>  <span class="o">|</span> <span class="o">...</span>
+<span class="mi">2020</span><span class="o">-</span><span class="mi">06</span><span class="o">-</span><span class="mi">15</span><span class="n">T12</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">01</span><span class="n">Z</span>     <span class="o">|</span> <span class="mf">1.0</span>  <span class="o">|</span> <span class="o">...</span>
+<span class="o">...</span>
+<span class="mi">2020</span><span class="o">-</span><span class="mi">06</span><span class="o">-</span><span class="mi">15</span><span class="n">T13</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="n">Z</span>     <span class="o">|</span> <span class="mf">3600.0</span> <span class="o">|</span> <span class="o">...</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="units.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Units Convention in Hercules</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="h_dict.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">H_Dict Structure</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#core-concepts">Core Concepts</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#time-interpretation-inputs-vs-internal-values">Time Interpretation: Inputs vs. Internal Values</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#input-files-start-of-period-convention">Input files: start-of-period convention</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hercules-internal-values-instantaneous-convention">Hercules internal values: instantaneous convention</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interpolation-methods">Interpolation methods</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#averaged-to-instantaneous-wind-solar-and-similar-resource-and-power-signals"><code class="docutils literal notranslate"><span class="pre">"averaged_to_instantaneous"</span></code> (wind, solar, and similar resource and power signals)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#instantaneous-to-instantaneous"><code class="docutils literal notranslate"><span class="pre">"instantaneous_to_instantaneous"</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#achieving-zero-order-hold-zoh-behaviour">Achieving zero-order-hold (ZOH) behaviour</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#input-requirements">Input Requirements</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#datetime-string-format-iso-8601">Datetime String Format (ISO 8601)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#converting-local-time-to-utc">Converting Local Time to UTC</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computed-time-values">Computed Time Values</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-file-requirements">Data File Requirements</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wind-and-solar-input-data">Wind and Solar Input Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#external-data-lmp-etc">External Data (LMP, etc.)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#time-coordinate-system">Time Coordinate System</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#output-files">Output Files</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#backward-compatibility">Backward Compatibility</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#consistency-validation">Consistency Validation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#best-practices">Best Practices</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-complete-timing-setup">Example: Complete Timing Setup</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By National Laboratory of the Rockies
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

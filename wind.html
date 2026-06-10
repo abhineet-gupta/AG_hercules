@@ -1,0 +1,810 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Wind Farm Components &#8212; HERCULES</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=b8b12719"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-3V1BDK8KEJ"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-3V1BDK8KEJ');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-3V1BDK8KEJ');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'wind';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Power Playback" href="power_playback.html" />
+    <link rel="prev" title="Output Files" href="output_files.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/herc.png" class="logo__image only-light" alt="HERCULES - Home"/>
+    <img src="_static/herc.png" class="logo__image only-dark pst-js-only" alt="HERCULES - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="index.html">
+                    Hercules
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Installation and Contribution</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation instructions</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="contribute.html">Contributing to Hercules</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Running Hercules</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="running_hercules.html">Running Hercules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="order_of_op.html">Order of Operations</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Key Concepts</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="key_concepts.html">Key Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="units.html">Units Convention in Hercules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="timing.html">Timing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="h_dict.html">H_Dict Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hybrid_plant.html">Hybrid Plant Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="component_types.html">Component Names, Types, and Categories</a></li>
+<li class="toctree-l1"><a class="reference internal" href="adding_components.html">Adding a New Component</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hercules_model.html">HerculesModel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="output_files.html">Output Files</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Plant Components</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Wind Farm Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="power_playback.html">Power Playback</a></li>
+<li class="toctree-l1"><a class="reference internal" href="solar_pv.html">Solar PV</a></li>
+<li class="toctree-l1"><a class="reference internal" href="battery.html">Battery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="electrolyzer.html">Electrolyzer Plant</a></li>
+<li class="toctree-l1"><a class="reference internal" href="thermal_component_base.html">Thermal Component Base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="open_cycle_gas_turbine.html">Open Cycle Gas Turbine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="steam_turbine.html">Steam Turbine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="combined_cycle_plant.html">Combined Cycle Gas Turbine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="thermal_plant.html">Thermal Plant</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Inputs</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="hercules_input.html">Hercules Input Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gridstatus_download.html">Grid Status Data Download</a></li>
+<li class="toctree-l1"><a class="reference internal" href="resource_downloading.html">Solar and Wind Resource Downloading and Upsampling</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="examples_overview.html">Examples Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples/00_wind_farm_only.html">Example 00: Wind only</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples/00c_power_playback.html">Example 00c: Power Playback</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples/01_wind_farm_dof1_model.html">Example 01: Wind Only: 1-DOF model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples/02a_wind_farm_realistic_inflow.html">Example 02a: Wind Farm Realistic Inflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples/02b_wind_farm_realistic_inflow_precom_floris.html">Example 02b: Wind Farm Realistic Inflow (Precomputed FLORIS)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples/02c_wind_farm_realistic_inflow_direct.html">Example 02c: Wind Farm Realistic Inflow (Direct - No Wake Modeling)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples/03_wind_and_solar.html">Example 03: Wind and solar hybrid plant</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples/04_wind_and_storage.html">Example 04: Wind and storage hybrid plant</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples/05_wind_and_storage_with_lmp.html">Example 05: Wind and storage with LMP-based control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples/06_wind_and_hydrogen.html">Example 06: Wind and hydrogen hybrid plant</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples/07_thermal_plants.html">Example 07: Thermal Plants</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples/08_multi_unit_thermal_plants.html">Example 08: Multi-unit Thermal Plants</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/NatLabRockies/hercules" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/NatLabRockies/hercules/edit/develop/docs/wind.md" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/NatLabRockies/hercules/issues/new?title=Issue%20on%20page%20%2Fwind.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/wind.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Wind Farm Components</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#windfarm-with-dynamic-wake-method">WindFarm (with Dynamic wake method)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#windfarm-with-precomputed-wake-method">WindFarm (with Precomputed wake method)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#windfarm-with-no-added-wakes-method">WindFarm (with No Added Wakes method)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#windfarmscadapower-scada-power-data">WindFarmSCADAPower (SCADA Power Data)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration">Configuration</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#windfarm-required-parameters">WindFarm Required Parameters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#windfarmscadapower-specific-parameters">WindFarmSCADAPower Specific Parameters</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#turbine-models">Turbine Models</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#filter-model">Filter Model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dof-model">1-DOF Model</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#outputs">Outputs</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#common-outputs">Common Outputs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#windfarm-only-outputs">WindFarm-Only Outputs</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#logging-configuration">Logging Configuration</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#available-channels">Available Channels</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#selective-array-element-logging">Selective Array Element Logging</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-configurations">Example Configurations</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="wind-farm-components">
+<h1>Wind Farm Components<a class="headerlink" href="#wind-farm-components" title="Link to this heading">#</a></h1>
+<p>Hercules provides four wind farm simulation components that differ in their approach to wake modeling and data sources. The first three components support both simple filter-based turbine models and 1-degree-of-freedom (1-DOF) turbine dynamics, while the fourth component uses SCADA power data directly.</p>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading">#</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">WindFarm</span></code> component applies wind speed time signals to turbine models to simulate wind farm behavior over extended periods. This is available with different methods for how wakes are applies, as described below. The <code class="docutils literal notranslate"><span class="pre">WindFarmSCADAPower</span></code> component uses a fundamentally different approach by using actual SCADA power measurements as input.</p>
+</section>
+<section id="windfarm-with-dynamic-wake-method">
+<h2>WindFarm (with Dynamic wake method)<a class="headerlink" href="#windfarm-with-dynamic-wake-method" title="Link to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">WindFarm</span></code> is a comprehensive wind farm simulator. When <code class="docutils literal notranslate"><span class="pre">wake_method=&quot;dynamic&quot;</span></code> (the default), <code class="docutils literal notranslate"><span class="pre">WindFarm</span></code> computes wake effects dynamically at each time step (or at intervals specified by <code class="docutils literal notranslate"><span class="pre">floris_update_time_s</span></code>). It focuses on meso-scale phenomena by applying a separate wind speed time signal to each turbine model derived from data. This model combines FLORIS wake modeling with detailed turbine dynamics for long-term wind farm performance analysis.</p>
+<p><strong>Use this model when:</strong></p>
+<ul class="simple">
+<li><p>Turbines have individual power setpoints or non-uniform operation</p></li>
+<li><p>Precise wake modeling is required for each control action</p></li>
+<li><p>Turbines may be partially derated or individually controlled</p></li>
+</ul>
+</section>
+<section id="windfarm-with-precomputed-wake-method">
+<h2>WindFarm (with Precomputed wake method)<a class="headerlink" href="#windfarm-with-precomputed-wake-method" title="Link to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">WindFarm</span></code> with <code class="docutils literal notranslate"><span class="pre">wake_method=&quot;precomputed&quot;</span></code> is an optimized variant that pre-computes all FLORIS wake deficits at initialization for improved simulation speed. This approach provides significant speed improvements while conservatively assuming wakes are always based on nominal operation.</p>
+<p><strong>Use this model when:</strong></p>
+<ul class="simple">
+<li><p>Not investigating wakes of derated turbines or wake losses can be conservatively estimated.</p></li>
+</ul>
+</section>
+<section id="windfarm-with-no-added-wakes-method">
+<h2>WindFarm (with No Added Wakes method)<a class="headerlink" href="#windfarm-with-no-added-wakes-method" title="Link to this heading">#</a></h2>
+<p>Using <code class="docutils literal notranslate"><span class="pre">WindFarm</span></code> with <code class="docutils literal notranslate"><span class="pre">wake_method=&quot;no_added_wakes&quot;</span></code> assumes that wake effects are already included in the input wind data and performs no wake modeling during simulation. This model is appropriate for using SCADA data of operational farm since wake losses already included in data.</p>
+</section>
+<section id="windfarmscadapower-scada-power-data">
+<h2>WindFarmSCADAPower (SCADA Power Data)<a class="headerlink" href="#windfarmscadapower-scada-power-data" title="Link to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">WindFarmSCADAPower</span></code> plays back pre-recorded SCADA turbine power data directly rather than computing power from wind speeds and turbine models. There is no filtering or control – the turbine powers are simply replayed at the values present in the SCADA data file.</p>
+</section>
+<section id="configuration">
+<h2>Configuration<a class="headerlink" href="#configuration" title="Link to this heading">#</a></h2>
+<section id="windfarm-required-parameters">
+<h3>WindFarm Required Parameters<a class="headerlink" href="#windfarm-required-parameters" title="Link to this heading">#</a></h3>
+<p>Required parameters for WindFarm in <a class="reference internal" href="h_dict.html"><span class="std std-doc">h_dict</span></a> (see <a class="reference internal" href="timing.html"><span class="std std-doc">timing</span></a> for time-related parameters):</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">floris_input_file</span></code>: FLORIS farm configuration</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wind_input_filename</span></code>: Wind resource data file</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wake_method</span></code>: One of <code class="docutils literal notranslate"><span class="pre">&quot;dynamic&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;precomputed&quot;</span></code>, or <code class="docutils literal notranslate"><span class="pre">&quot;no_added_wakes&quot;</span></code> (defaults to <code class="docutils literal notranslate"><span class="pre">&quot;dynamic&quot;</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">floris_update_time_s</span></code>: How often to update FLORIS (the last <code class="docutils literal notranslate"><span class="pre">floris_update_time_s</span></code> seconds are averaged as input). Required for <code class="docutils literal notranslate"><span class="pre">&quot;dynamic&quot;</span></code> and <code class="docutils literal notranslate"><span class="pre">&quot;precomputed&quot;</span></code> wake methods; for <code class="docutils literal notranslate"><span class="pre">&quot;no_added_wakes&quot;</span></code>, this parameter is not required and ignored if provided.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">turbine_file_name</span></code>: Turbine model configuration</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">log_channels</span></code>: List of output channels to log. See <a class="reference internal" href="#wind-logging-configuration"><span class="std std-ref">Logging Configuration</span></a> section below for details.</p></li>
+</ul>
+</section>
+<section id="windfarmscadapower-specific-parameters">
+<h3>WindFarmSCADAPower Specific Parameters<a class="headerlink" href="#windfarmscadapower-specific-parameters" title="Link to this heading">#</a></h3>
+<p>Required parameters for WindFarmSCADAPower:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">scada_filename</span></code>: Path to SCADA data file (CSV, pickle, or feather format)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">log_channels</span></code>: List of output channels to log. See <a class="reference internal" href="#logging-configuration"><span class="xref myst">Logging Configuration</span></a> section below for details.</p></li>
+</ul>
+<p><strong>SCADA File Format:</strong></p>
+<p>The SCADA file must contain the following columns:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">time_utc</span></code>: Timestamps in UTC (ISO 8601 format or parseable datetime strings). Each timestamp marks the <strong>start of a reporting period</strong>; values on that row are treated as period averages. See <a class="reference internal" href="timing.html#time-interpretation-inputs-vs-internal-values"><span class="std std-ref">Time Interpretation</span></a> for how Hercules converts these to instantaneous values.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wd_mean</span></code>: Mean wind direction in degrees</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pow_###</span></code>: Power output for each turbine (e.g., <code class="docutils literal notranslate"><span class="pre">pow_000</span></code>, <code class="docutils literal notranslate"><span class="pre">pow_001</span></code>, <code class="docutils literal notranslate"><span class="pre">pow_002</span></code>)</p></li>
+</ul>
+<p>Optional columns:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ws_###</span></code>: Wind speed for each turbine (e.g., <code class="docutils literal notranslate"><span class="pre">ws_000</span></code>, <code class="docutils literal notranslate"><span class="pre">ws_001</span></code>, <code class="docutils literal notranslate"><span class="pre">ws_002</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ws_mean</span></code>: Mean wind speed (used if individual turbine speeds not provided)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ti_###</span></code>: Turbulence intensity for each turbine (defaults to 0.08 if not provided)</p></li>
+</ul>
+<p>The number of turbines and rated power are automatically inferred from the SCADA data.</p>
+</section>
+</section>
+<section id="turbine-models">
+<h2>Turbine Models<a class="headerlink" href="#turbine-models" title="Link to this heading">#</a></h2>
+<p><strong>Note:</strong> WindFarmSCADAPower does not use turbine models as power values come directly from SCADA data rather than being computed from wind speeds.</p>
+<section id="filter-model">
+<h3>Filter Model<a class="headerlink" href="#filter-model" title="Link to this heading">#</a></h3>
+<p>Simple first-order filter for power output smoothing with configurable time constants.</p>
+</section>
+<section id="dof-model">
+<h3>1-DOF Model<a class="headerlink" href="#dof-model" title="Link to this heading">#</a></h3>
+<p>Advanced model with rotor dynamics, pitch control, and generator torque control. Not applicable to WindFarmSCADAPower.</p>
+</section>
+</section>
+<section id="outputs">
+<h2>Outputs<a class="headerlink" href="#outputs" title="Link to this heading">#</a></h2>
+<section id="common-outputs">
+<h3>Common Outputs<a class="headerlink" href="#common-outputs" title="Link to this heading">#</a></h3>
+<p>All four components provide these outputs in the h_dict at each simulation step:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">power</span></code>: Total wind farm power (kW)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">turbine_powers</span></code>: Individual turbine power outputs (array, kW)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wind_speed_mean_background</span></code>: Farm-average background wind speed (m/s)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wind_speed_mean_withwakes</span></code>: Farm-average with-wakes wind speed (m/s)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wind_direction_mean</span></code>: Farm-average wind direction (degrees)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wind_speeds_background</span></code>: Per-turbine background wind speeds (array, m/s)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wind_speeds_withwakes</span></code>: Per-turbine with-wakes wind speeds (array, m/s)</p></li>
+</ul>
+</section>
+<section id="windfarm-only-outputs">
+<h3>WindFarm-Only Outputs<a class="headerlink" href="#windfarm-only-outputs" title="Link to this heading">#</a></h3>
+<p>The three <code class="docutils literal notranslate"><span class="pre">WindFarm</span></code> variants additionally provide:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">turbine_power_setpoints</span></code>: Current power setpoint values (array, kW)</p></li>
+</ul>
+<p><strong>Note for WindFarm with no_added_wakes and WindFarmSCADAPower:</strong> In these models (no wake modeling), <code class="docutils literal notranslate"><span class="pre">wind_speeds_withwakes</span></code> equals <code class="docutils literal notranslate"><span class="pre">wind_speeds_background</span></code> and <code class="docutils literal notranslate"><span class="pre">wind_speed_mean_withwakes</span></code> equals <code class="docutils literal notranslate"><span class="pre">wind_speed_mean_background</span></code>.</p>
+</section>
+</section>
+<section id="logging-configuration">
+<span id="wind-logging-configuration"></span><h2>Logging Configuration<a class="headerlink" href="#logging-configuration" title="Link to this heading">#</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">log_channels</span></code> parameter controls which outputs are written to the HDF5 output file. This is a list of channel names. The <code class="docutils literal notranslate"><span class="pre">power</span></code> channel is always logged, even if not explicitly specified.</p>
+<section id="available-channels">
+<h3>Available Channels<a class="headerlink" href="#available-channels" title="Link to this heading">#</a></h3>
+<p><strong>Scalar Channels:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">power</span></code>: Total wind farm power output (kW)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wind_speed_mean_background</span></code>: Farm-average background wind speed (m/s)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wind_speed_mean_withwakes</span></code>: Farm-average with-wakes wind speed (m/s)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wind_direction_mean</span></code>: Farm-average wind direction (degrees)</p></li>
+</ul>
+<p><strong>Array Channels:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">turbine_powers</span></code>: Power output for all turbines (creates datasets like <code class="docutils literal notranslate"><span class="pre">wind_farm.turbine_powers.000</span></code>, <code class="docutils literal notranslate"><span class="pre">wind_farm.turbine_powers.001</span></code>, etc.)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">turbine_power_setpoints</span></code>: Power setpoints for all turbines (WindFarm only)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wind_speeds_background</span></code>: Background wind speeds for all turbines</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wind_speeds_withwakes</span></code>: With-wakes wind speeds for all turbines</p></li>
+</ul>
+</section>
+<section id="selective-array-element-logging">
+<h3>Selective Array Element Logging<a class="headerlink" href="#selective-array-element-logging" title="Link to this heading">#</a></h3>
+<p>For large wind farms, logging all turbine data can significantly increase file size and slow down the simulation. You can log specific turbine indices by appending a 3-digit turbine index to the channel name:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># Log only turbines 0, 5, and 10</span>
+<span class="nt">log_channels</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">power</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">wind_speed_mean_background</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">wind_speed_mean_withwakes</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">wind_direction_mean</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">turbine_powers.000</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">turbine_powers.005</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">turbine_powers.010</span>
+</pre></div>
+</div>
+</section>
+<section id="example-configurations">
+<h3>Example Configurations<a class="headerlink" href="#example-configurations" title="Link to this heading">#</a></h3>
+<p><strong>Minimal Logging:</strong></p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">log_channels</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">power</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">wind_speed_mean_background</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">wind_speed_mean_withwakes</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">wind_direction_mean</span>
+</pre></div>
+</div>
+<p><strong>Detailed Logging (all turbines):</strong></p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">log_channels</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">power</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">wind_speed_mean_background</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">wind_speed_mean_withwakes</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">wind_direction_mean</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">turbine_powers</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">wind_speeds_withwakes</span>
+</pre></div>
+</div>
+<p><strong>Selected Turbine Logging:</strong></p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># Log first 3 turbines only</span>
+<span class="nt">log_channels</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">power</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">wind_speed_mean_background</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">wind_speed_mean_withwakes</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">wind_direction_mean</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">turbine_powers.000</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">turbine_powers.001</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">turbine_powers.002</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="output_files.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Output Files</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="power_playback.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Power Playback</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#windfarm-with-dynamic-wake-method">WindFarm (with Dynamic wake method)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#windfarm-with-precomputed-wake-method">WindFarm (with Precomputed wake method)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#windfarm-with-no-added-wakes-method">WindFarm (with No Added Wakes method)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#windfarmscadapower-scada-power-data">WindFarmSCADAPower (SCADA Power Data)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration">Configuration</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#windfarm-required-parameters">WindFarm Required Parameters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#windfarmscadapower-specific-parameters">WindFarmSCADAPower Specific Parameters</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#turbine-models">Turbine Models</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#filter-model">Filter Model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dof-model">1-DOF Model</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#outputs">Outputs</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#common-outputs">Common Outputs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#windfarm-only-outputs">WindFarm-Only Outputs</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#logging-configuration">Logging Configuration</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#available-channels">Available Channels</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#selective-array-element-logging">Selective Array Element Logging</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-configurations">Example Configurations</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By National Laboratory of the Rockies
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
